@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard - Manage your tech blog">
+    <title>Admin Dashboard - TechPulse</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>TechPulse Admin</h1>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">View Site</a></li>
+                    <li><a href="admin.html" class="active">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="container">
+            <div class="admin-header">
+                <h1>Content Management Dashboard</h1>
+                <p>Manage your blog posts, images, and content</p>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="posts">Posts</button>
+                <button class="tab-btn" data-tab="new-post">New Post</button>
+                <button class="tab-btn" data-tab="subscribers">Subscribers</button>
+                <button class="tab-btn" data-tab="messages">Messages</button>
+            </div>
+
+            <div class="tab-content active" id="posts-tab">
+                <div class="admin-section">
+                    <h2>All Posts</h2>
+                    <div class="admin-posts-list" id="adminPostsList">
+                        <div class="loading">Loading posts...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="new-post-tab">
+                <div class="admin-section">
+                    <h2 id="formTitle">Create New Post</h2>
+                    <form id="postForm" class="admin-form">
+                        <input type="hidden" id="postId">
+                        
+                        <div class="form-group">
+                            <label for="postTitle">Post Title *</label>
+                            <input type="text" id="postTitle" required placeholder="Enter post title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postCategory">Category *</label>
+                            <select id="postCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="news">News</option>
+                                <option value="tutorials">Tutorials</option>
+                                <option value="reviews">Reviews</option>
+                                <option value="tips">Tips & Tricks</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postExcerpt">Excerpt (Short Description) *</label>
+                            <textarea id="postExcerpt" rows="3" required placeholder="Brief summary of the article"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postContent">Content *</label>
+                            <textarea id="postContent" rows="12" required placeholder="Full article content (supports paragraphs)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postImage">Featured Image URL</label>
+                            <input type="text" id="postImage" placeholder="https://example.com/image.jpg or leave empty for default">
+                            <small>Tip: Use image hosting services like Imgur, or data URLs for local images</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postTags">Tags (comma-separated)</label>
+                            <input type="text" id="postTags" placeholder="AI, Technology, Programming">
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="postFeatured">
+                                <span>Feature this post on homepage</span>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Publish Post</button>
+                            <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                        </div>
+                    </form>
+                    <div id="postMessage" class="message"></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="subscribers-tab">
+                <div class="admin-section">
+                    <h2>Newsletter Subscribers</h2>
+                    <div class="subscribers-list" id="subscribersList">
+                        <div class="loading">Loading subscribers...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="messages-tab">
+                <div class="admin-section">
+                    <h2>Contact Messages</h2>
+                    <div class="messages-list" id="messagesList">
+                        <div class="loading">Loading messages...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechPulse Admin Panel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
